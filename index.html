@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Şelale Halı Yıkama | Profesyonel Halı Temizliği – Hakkı Çamuroğlu</title>
+<meta name="description" content="Şelale Halı Yıkama ile yün, ipek, makine ve kilim halılarınız uzman ekibimizce temizleniyor. Kapıdan kapıya ücretsiz servis. Anlık sipariş takibi.">
+<meta property="og:title" content="Şelale Halı Yıkama | Profesyonel Halı Temizliği">
+<meta property="og:description" content="Yün, ipek, makine ve kilim halılarınız profesyonel ellerde temizleniyor. Ücretsiz alım-teslimat, anlık sipariş takibi.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;color:#1a2332;background:#fff;overflow-x:hidden}
+a{text-decoration:none}
+img{max-width:100%}
+
+/* ── TOKENS ── */
+:root{
+  --navy:#0e1a2b;--navy2:#162337;--navy3:#1c2e45;
+  --gold:#c9a84c;--gold-l:#e8c97a;--gold-d:rgba(201,168,76,.15);
+  --white:#fff;--gray:#f5f6f8;--gray2:#eef0f3;
+  --text:#1a2332;--muted:#6b7a8d;--muted2:#a0adb8;
+  --r:12px;--rs:8px;
+  --sh:0 8px 32px rgba(0,0,0,.08);
+  --sh2:0 20px 60px rgba(0,0,0,.13);
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(0,0,0,.07);
+  height:66px;display:flex;align-items:center;
+  padding:0 clamp(1rem,4vw,3rem);justify-content:space-between;
+}
+.nav-logo{display:flex;align-items:center;gap:11px}
+.nav-logo-mark{
+  width:40px;height:40px;background:var(--navy);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-logo-mark svg{width:22px;height:22px;fill:var(--gold)}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);line-height:1.1}
+.nav-brand small{display:block;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:500;color:var(--muted);margin-top:1px;letter-spacing:.02em}
+.nav-links{display:flex;align-items:center;gap:1.6rem}
+.nav-links a{font-size:.85rem;font-weight:600;color:var(--muted);transition:color .18s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{
+  background:var(--navy);color:var(--white)!important;
+  padding:.5rem 1.1rem;border-radius:var(--rs);transition:background .18s!important;
+}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+.nav-mob-cta{display:none}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(140deg,var(--navy) 0%,#0b2040 55%,#1a3050 100%);
+  color:#fff;padding:clamp(4rem,10vw,7rem) clamp(1rem,4vw,3rem) clamp(4.5rem,11vw,8rem);
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 55% at 50% 0%,rgba(201,168,76,.1) 0%,transparent 70%);
+}
+.hero-orbs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(60px)}
+.orb1{width:420px;height:420px;background:rgba(201,168,76,.07);top:-140px;left:-100px;animation:drift1 14s ease-in-out infinite}
+.orb2{width:340px;height:340px;background:rgba(77,133,255,.05);bottom:-80px;right:-60px;animation:drift2 18s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+@keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,25px)}}
+.hero-inner{position:relative;max-width:760px;margin:0 auto}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(201,168,76,.13);border:1px solid rgba(201,168,76,.38);
+  color:var(--gold-l);border-radius:20px;padding:.38rem 1rem;
+  font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:1.6rem;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.3rem,6vw,4rem);font-weight:700;line-height:1.12;
+  color:#fff;margin-bottom:1.3rem;
+}
+.hero h1 em{color:var(--gold-l);font-style:normal}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:2.6rem;max-width:540px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold);color:var(--navy);
+  padding:.9rem 1.9rem;border-radius:10px;
+  font-weight:700;font-size:.95rem;transition:all .2s;
+}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.35)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.08);color:#fff;
+  padding:.9rem 1.9rem;border-radius:10px;border:1.5px solid rgba(255,255,255,.25);
+  font-weight:700;font-size:.95rem;transition:all .2s;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.5)}
+.hero-trust{
+  display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;
+  margin-top:3rem;padding-top:2.4rem;
+  border-top:1px solid rgba(255,255,255,.1);
+  font-size:.82rem;color:rgba(255,255,255,.5);
+}
+.hero-trust span{display:flex;align-items:center;gap:5px}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--navy2);display:flex;justify-content:center;flex-wrap:wrap}
+.stat-item{
+  padding:1.7rem clamp(1.5rem,4vw,3rem);text-align:center;
+  border-right:1px solid rgba(255,255,255,.07);flex:1;min-width:140px;
+}
+.stat-item:last-child{border-right:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--gold-l);line-height:1}
+.stat-l{font-size:.73rem;color:rgba(255,255,255,.45);margin-top:5px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+
+/* ── SECTION COMMONS ── */
+.section{padding:clamp(3.5rem,8vw,6rem) clamp(1rem,4vw,3rem);max-width:1160px;margin:0 auto}
+.section-wrap{background:var(--gray)}
+.section-tag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.55rem;display:flex;align-items:center;gap:6px}
+.section-tag::before{content:'';display:block;width:20px;height:2px;background:var(--gold);border-radius:1px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.9rem}
+.section-sub{font-size:.97rem;color:var(--muted);line-height:1.75;max-width:580px}
+.section-head{margin-bottom:clamp(2rem,4vw,3.2rem)}
+
+/* ── SERVICES ── */
+#hizmetler .section{display:flex;gap:clamp(2rem,5vw,5rem);align-items:flex-start;flex-wrap:wrap}
+.svc-left{flex:0 0 340px;max-width:100%}
+.svc-grid{flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;min-width:280px}
+.svc-card{
+  background:var(--white);border:1.5px solid rgba(0,0,0,.07);
+  border-radius:var(--r);padding:1.5rem 1.3rem;
+  transition:all .25s;position:relative;overflow:hidden;cursor:default;
+}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-l));transform:scaleX(0);transition:transform .28s;transform-origin:left}
+.svc-card:hover{border-color:var(--gold);box-shadow:0 10px 36px rgba(201,168,76,.13);transform:translateY(-4px)}
+.svc-card:hover::after{transform:scaleX(1)}
+.svc-icon{font-size:2.2rem;margin-bottom:.85rem;display:block}
+.svc-name{font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:.3rem}
+.svc-price{font-size:.82rem;color:var(--gold);font-weight:700;background:var(--gold-d);border-radius:6px;padding:.2rem .55rem;display:inline-block;margin-bottom:.5rem}
+.svc-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+
+/* ── HOW IT WORKS ── */
+.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem;margin-top:2.5rem}
+.p-step{text-align:center;position:relative}
+.p-step+.p-step::before{content:'→';position:absolute;left:-1.1rem;top:28px;font-size:1.3rem;color:var(--gold-d);display:none}
+.p-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--navy);color:var(--gold-l);
+  font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;position:relative;z-index:1;
+  box-shadow:0 4px 16px rgba(14,26,43,.25);
+}
+.p-icon{font-size:1.9rem;margin-bottom:.75rem}
+.p-title{font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:.4rem}
+.p-desc{font-size:.82rem;color:var(--muted);line-height:1.6;max-width:220px;margin:0 auto}
+
+/* ── FEATURES / WHY ── */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:2.5rem}
+.why-item{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:var(--white);border:1.5px solid rgba(0,0,0,.07);
+  border-radius:var(--r);padding:1.3rem;
+  transition:box-shadow .2s,border-color .2s;
+}
+.why-item:hover{border-color:rgba(201,168,76,.35);box-shadow:var(--sh)}
+.why-ic{
+  width:46px;height:46px;flex-shrink:0;border-radius:11px;
+  background:var(--gold-d);border:1px solid rgba(201,168,76,.3);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+}
+.why-title{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.3rem}
+.why-desc{font-size:.8rem;color:var(--muted);line-height:1.58}
+
+/* ── TRACK SECTION ── */
+.track-section{background:var(--navy);color:#fff;padding:clamp(3.5rem,8vw,5.5rem) clamp(1rem,4vw,3rem);text-align:center}
+.track-inner{max-width:620px;margin:0 auto}
+.track-section .section-title{color:#fff}
+.track-section .section-sub{color:rgba(255,255,255,.58);margin:0 auto .5rem}
+.track-form{
+  display:flex;gap:10px;margin-top:1.8rem;justify-content:center;flex-wrap:wrap;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:1.2rem 1.2rem;
+}
+.track-input{
+  flex:1;min-width:200px;max-width:320px;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);
+  border-radius:9px;color:#fff;padding:.82rem 1.1rem;
+  font-size:.9rem;font-family:'DM Sans',sans-serif;outline:none;
+  transition:border-color .18s;
+}
+.track-input::placeholder{color:rgba(255,255,255,.38)}
+.track-input:focus{border-color:var(--gold)}
+.btn-track{
+  background:var(--gold);color:var(--navy);padding:.82rem 1.6rem;
+  border-radius:9px;font-weight:700;font-size:.9rem;
+  border:none;cursor:pointer;transition:all .2s;white-space:nowrap;
+}
+.btn-track:hover{background:var(--gold-l)}
+.track-hint{font-size:.73rem;color:rgba(255,255,255,.3);margin-top:1rem;line-height:1.5}
+.track-hint a{color:var(--gold);text-decoration:underline}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start}
+.contact-heading{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:1.6rem}
+.c-row{display:flex;gap:13px;align-items:flex-start;margin-bottom:1.3rem}
+.c-icon{
+  width:42px;height:42px;background:var(--gray2);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.c-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted2);margin-bottom:2px}
+.c-val{font-weight:600;font-size:.95rem;color:var(--navy)}
+.c-val a{color:var(--navy);transition:color .18s}
+.c-val a:hover{color:var(--gold)}
+.wa-btn-big{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25d366;color:#fff;padding:.9rem 1.6rem;
+  border-radius:10px;font-weight:700;font-size:.9rem;
+  margin-top:1.6rem;transition:opacity .2s;
+}
+.wa-btn-big:hover{opacity:.88}
+.wa-btn-big svg{width:20px;height:20px;fill:#fff;flex-shrink:0}
+.map-placeholder{
+  background:var(--gray2);border-radius:var(--r);
+  height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--muted2);font-size:.85rem;gap:10px;border:1.5px dashed rgba(0,0,0,.1);
+}
+.map-placeholder span{font-size:3rem}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);padding:2.2rem clamp(1rem,4vw,3rem);text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:8px;justify-content:center}
+.footer-logo svg{width:18px;height:18px;fill:var(--gold)}
+footer p{font-size:.78rem;line-height:1.8}
+footer a{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-mob-cta{display:flex;align-items:center;gap:7px;background:var(--navy);color:#fff;padding:.48rem .9rem;border-radius:var(--rs);font-size:.82rem;font-weight:700}
+  #hizmetler .section{flex-direction:column}
+  .svc-left{flex:none;max-width:100%}
+  .contact-grid{grid-template-columns:1fr}
+  .map-placeholder{height:200px}
+}
+@media(max-width:500px){
+  .stats-bar{flex-direction:column}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:1.2rem 2rem}
+  .stat-item:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M12 2C12 2 4 10.5 4 15a8 8 0 0 0 16 0c0-4.5-8-13-8-13z"/></svg>
+    </div>
+    <div class="nav-brand">Şelale Halı Yıkama<small>Hakkı Çamuroğlu</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="#hizmetler">Hizmetler</a>
+    <a href="#nasil-calisir">Nasıl Çalışır?</a>
+    <a href="#neden-biz">Neden Biz?</a>
+    <a href="#iletisim">İletişim</a>
+    <a href="#siparis-takip" class="nav-cta">📦 Sipariş Takip</a>
+  </div>
+  <a class="nav-mob-cta" href="tel:+905000000000">📞 Ara</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-orbs"><div class="orb orb1"></div><div class="orb orb2"></div></div>
+  <div class="hero-inner">
+    <div class="hero-badge">💧 Profesyonel Halı Temizliği</div>
+    <h1>Halılarınız <em>Tertemiz Şekilde</em><br>Teslim Edilsin</h1>
+    <p class="hero-sub">Yün, ipek, makine, kilim halılarınız Yorgan ve Stor Perdeleriniz modern ekipmanlar ve uzman kadromuzla temizleniyor. Kapıdan kapıya ücretsiz alım-teslimat. Anlık sipariş takibi.</p>
+    <div class="hero-btns">
+      <a class="btn-gold" href="tel:+90 5342842000">📞 Hemen Arayın</a>
+      <a class="btn-ghost" href="#siparis-takip">📦 Siparişimi Takip Et</a>
+    </div>
+    <div class="hero-trust">
+      <span>✅ Ücretsiz Alım-Teslimat</span>
+      <span>🔒 Sigortalı Hizmet</span>
+      <span>⚡ 5-7 İş Günü</span>
+      <span>📱 Anlık Takip</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-n">15+</div><div class="stat-l">Yıl Deneyim</div></div>
+  <div class="stat-item"><div class="stat-n">30.000+</div><div class="stat-l">Mutlu Müşteri</div></div>
+  <div class="stat-item"><div class="stat-n">250.000+</div><div class="stat-l">Temizlenen m²</div></div>
+  <div class="stat-item"><div class="stat-n">%100</div><div class="stat-l">Müşteri Memnuniyeti</div></div>
+</div>
+
+<!-- ── SERVICES ── -->
+<div id="hizmetler">
+  <div class="section">
+    <div class="svc-left">
+      <div class="section-head">
+        <div class="section-tag">Hizmetler</div>
+        <h2 class="section-title">Her Halı Türüne Özel Temizleme Yöntemi</h2>
+        <p class="section-sub">Halınızın dokusuna ve malzemesine göre özel formüller ve yöntemler uygulanır. Fiyatlar m² başınadır.</p>
+      </div>
+      <a class="btn-gold" style="display:inline-flex" href="tel:+905342842000">📞 Teklif Alın</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card"><span class="svc-icon">🪅</span><div class="svc-name">Yün Halı</div><div class="svc-price">₺90 / m²</div><div class="svc-desc">Doğal liflere zarar vermeden nazik ve derin temizleme. Renk canlılığı korunur.</div></div>
+      <div class="svc-card"><span class="svc-icon">🏭</span><div class="svc-name">Makine Halısı</div><div class="svc-price">₺80 / m²</div><div class="svc-desc">Yüksek yoğunluklu lekeleri çıkarma ve hijyenik kurutma.</div></div>
+      <div class="svc-card"><span class="svc-icon">✨</span><div class="svc-name">İpek Halı</div><div class="svc-price">₺150 / m²</div><div class="svc-desc">İpek dokusunu ve parlaklığını koruyan özel hassas temizleme.</div></div>
+      <div class="svc-card"><span class="svc-icon">🏺</span><div class="svc-name">Kilim</div><div class="svc-price">₺150 / m²</div><div class="svc-desc">El dokumalarına uygun geleneksel ve güvenli temizleme.</div></div>
+      <div class="svc-card"><span class="svc-icon">🌿</span><div class="svc-name">Bambu</div><div class="svc-price">₺150 / m²</div><div class="svc-desc">Doğal bambu liflerini canlandıran özel nem dengeli yıkama.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
+<div class="section-wrap" id="nasil-calisir">
+  <div class="section">
+    <div class="section-head">
+      <div class="section-tag">Süreç</div>
+      <h2 class="section-title">Nasıl Çalışır?</h2>
+      <p class="section-sub">Halı temizleme süreciniz 4 kolay adımda tamamlanıyor. Siz sadece aramanızı yapın, gerisini biz halledelim.</p>
+    </div>
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-num">1</div>
+        <div class="p-icon">📞</div>
+        <div class="p-title">Randevu Alın</div>
+        <div class="p-desc">Telefon veya WhatsApp ile bizi arayın, uygun gün ve saati belirleyin.</div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">2</div>
+        <div class="p-icon">🚐</div>
+        <div class="p-title">Biz Geliyoruz</div>
+        <div class="p-desc">Ücretsiz aracımızla kapınıza gelip halılarınızı teslim alıyoruz.</div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">3</div>
+        <div class="p-icon">🧼</div>
+        <div class="p-title">Profesyonel Yıkama</div>
+        <div class="p-desc">Uzman ekibimiz halınızı özenle temizler, kurutur. WhatsApp ile bilgilendirme yapılır.</div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">4</div>
+        <div class="p-icon">✅</div>
+        <div class="p-title">Teslim ve Ödeme</div>
+        <div class="p-desc">Temiz ve taze kokan halınız evinize teslim edilir.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── WHY US ── -->
+<div id="neden-biz">
+  <div class="section">
+    <div class="section-head">
+      <div class="section-tag">Neden Biz?</div>
+      <h2 class="section-title">Güvenin Adresi</h2>
+      <p class="section-sub">On yılı aşkın deneyimimiz ve binlerce mutlu müşterimizle sektörün güvenilir ismi olmaya devam ediyoruz.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-ic">🚚</div>
+        <div><div class="why-title">Ücretsiz Alım-Teslimat</div><div class="why-desc">Kapıdan kapıya ücretsiz hizmetimizle vakit ve emek kaybetmezsiniz.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">💧</div>
+        <div><div class="why-title">Çevre Dostu Ürünler</div><div class="why-desc">İnsan ve çevre sağlığına duyarlı, sertifikalı temizlik ürünleri kullanıyoruz.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">📱</div>
+        <div><div class="why-title">Anlık Dijital Takip</div><div class="why-desc">Halınızın nerede olduğunu, size özel dijital makbuz linkinizden canlı takip edin.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">🔒</div>
+        <div><div class="why-title">Güvenli Saklama</div><div class="why-desc">İşlem bekleyen halılar kapalı ve güvenli depomuzda titizlikle muhafaza edilir.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">⚡</div>
+        <div><div class="why-title">Hızlı Teslim</div><div class="why-desc">Ortalama 5-7 iş günü içinde temiz halınız evinizde olur.</div></div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">🏅</div>
+        <div><div class="why-title">15+ Yıllık Deneyim</div><div class="why-desc">Sektördeki uzun yıllar tecrübemizle halınız en güvenilir ellerde.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TRACK ── -->
+<div class="track-section" id="siparis-takip">
+  <div class="track-inner">
+    <div class="section-tag" style="color:var(--gold);justify-content:center">Sipariş Takip</div>
+    <h2 class="section-title" style="margin-bottom:.8rem">Halınız Nerede?</h2>
+    <p class="section-sub">Siparişinize özel WhatsApp makbuz linkine tıklayarak veya sipariş kodunuzu girerek durumunu anlık görün.</p>
+    <div class="track-form">
+      <input class="track-input" type="text" id="track-id" placeholder="Sipariş linki veya kodunu yapıştırın…">
+      <button class="btn-track" onclick="trackOrder()">🔍 Sorgula</button>
+    </div>
+    <p class="track-hint">
+      Sipariş kodunu veya linki WhatsApp üzerinden gönderilen makbuzunuzda bulabilirsiniz.<br>
+      Sorun yaşıyorsanız <a href="tel:+905342842000">bizi arayın</a>.
+    </p>
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<div id="iletisim">
+  <div class="section">
+    <div class="contact-grid">
+      <div>
+        <div class="section-tag">İletişim</div>
+        <h3 class="contact-heading">Bize Ulaşın</h3>
+        <div class="c-row">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Telefon</div>
+            <div class="c-val"><a href="tel:+90 534 284 20 00">+90 534 284 20 00</a></div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Adres</div>
+            <div class="c-val">Nişancı Mahallesi Çömlekciler Caddesi No 40</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Çalışma Saatleri</div>
+            <div class="c-val">Hafta içi: 08:00 – 19:00<br>Cumartesi: 09:00 – 19:00</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">E-posta</div>
+            <div class="c-val"><a href="mailto:info@selalehaliyikama.com.tr">info@selalehaliyikama.com.tr</a></div>
+          </div>
+        </div>
+        <a class="wa-btn-big" href="https://wa.me/905000000000?text=Merhaba%2C+halı+yıkama+hakkında+bilgi+almak+istiyorum." target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.05 2C6.478 2 2 6.477 2 12.049c0 1.943.52 3.76 1.427 5.326L2 22l4.748-1.388A10.01 10.01 0 0 0 12.05 22c5.57 0 10.05-4.477 10.05-10.05C22.1 6.477 17.62 2 12.05 2zm0 18.403a8.337 8.337 0 0 1-4.258-1.164l-.305-.18-3.164.924.89-3.073-.2-.316A8.337 8.337 0 0 1 3.69 12.05c0-4.61 3.751-8.36 8.36-8.36 4.61 0 8.36 3.75 8.36 8.36 0 4.61-3.75 8.353-8.36 8.353z"/></svg>
+          WhatsApp ile Yazın
+        </a>
+      </div>
+      <div>
+        <div class="map-placeholder">
+          <span>🗺️</span>
+          <p>Harita için Google Maps embed<br>kodu buraya eklenecek</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 24 24"><path d="M12 2C12 2 4 10.5 4 15a8 8 0 0 0 16 0c0-4.5-8-13-8-13z"/></svg>
+    Şelale Halı Yıkama
+  </div>
+  <p>© 2025 Şelale Halı Yıkama &ndash; Hakkı Çamuroğlu &nbsp;·&nbsp; Tüm hakları saklıdır<br>
+    <a href="/makbuz.html">Makbuz Sorgula</a> &nbsp;·&nbsp; <a href="tel:+905000000000">İletişim</a>
+  </p>
+</footer>
+
+<script>
+function trackOrder() {
+  let input = (document.getElementById('track-id').value || '').trim();
+  if (!input) { alert('Lütfen sipariş linkini veya kodunu girin.'); return; }
+
+  // Tam URL yapıştırılmışsa id parametresini çıkar
+  const urlMatch = input.match(/[?&]id=([^&\s]+)/);
+  if (urlMatch) {
+    input = decodeURIComponent(urlMatch[1]);
+  }
+
+  // # işareti varsa kaldır
+  input = input.replace(/^#/, '');
+
+  if (input.length < 3) { alert('Geçersiz sipariş kodu. Lütfen WhatsApp makbuzunuzdaki linki yapıştırın.'); return; }
+
+  window.location.href = '/makbuz.html?id=' + encodeURIComponent(input);
+}
+
+document.getElementById('track-id').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') trackOrder();
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
