@@ -874,28 +874,23 @@ button{cursor:pointer;border:none;outline:none;background:none}
 <div id="toast"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, doc, addDoc, updateDoc, deleteDoc,
-  getDoc, setDoc, onSnapshot, query, orderBy, getDocs, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+<script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
 
-const app = initializeApp({
-  apiKey:"AIzaSyAdY9gIu8FdwcoUCZSUN_lnRSReu0aKfEA",
-  authDomain:"selalehali-fe039.firebaseapp.com",
-  projectId:"selalehali-fe039",
-  storageBucket:"selalehali-fe039.firebasestorage.app",
-  messagingSenderId:"562047732542",
-  appId: "1:562047732542:web:2b512a338241c674b33a6f",
-  measurementId: "G-JWHRQVHX68"
+const client = new Appwrite.Client();
+    .setEndpoint('https://selalehali.appwrite.network/v1') // Cloudflare üzerinden yönlendirdiysen kendi URL'in
+    .setProject('69c3e66f003e642a278e'); // Appwrite Console'dan aldığın ID
+
+const databases = new Appwrite.Databases(client);
+const account = new Appwrite.Account(client);
 });
-const db = getFirestore(app);
-const ORDERS_COL   = collection(db,'orders');
-const CUSTS_COL    = collection(db,'customers');
-const WORKERS_COL  = collection(db,'workers');
-const GIDERS_COL   = collection(db,'giders');
-const LOCS_COL     = collection(db,'locations');
-const DEVS_COL     = collection(db,'devices');
-const SETTINGS_DOC = doc(db,'settings','firma');
+const response = await databases.listDocuments(
+    'DATABASE_ID', 
+    'COLLECTION_ID'
+);
+workersCache = response.documents.map(doc => ({
+    id: doc.$id,
+    ...doc
+}));
 
 let PRICES = {'Yün Halı':90,'Makine Halısı':80,'İpek Halı':150,'Kilim':150,'Bambu':150};
 const ST      = {bekliyor:'Bekliyor',yikamada:'Yıkamada',hazir:'Hazır',teslim:'Teslim Edildi'};
