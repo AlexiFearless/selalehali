@@ -1389,29 +1389,22 @@ function renderAdmCalisan() {
 window.togglePerm = async function (wid, perm, val) { const w = workersCache.find(x => x.id === wid); if (w) { w.perms = w.perms || {}; w.perms[perm] = val; await updateWorker(wid, { perms: w.perms }); } toast(PERM_LBL[perm] + ' ' + (val ? 'verildi ✅' : 'alındı ❌')); };
 window.addWorker = async function () {
   const u = ($('nw-u').value || '').trim(), p = ($('nw-p').value || '').trim(), n = ($('nw-n').value || '').trim();
+  console.log('Form değerleri:', { u, p, n });
   if (!u || !p || !n) { toast('❌ Tüm alanları doldurun!'); return; }
   if (u === 'Tutkun2010') { toast('❌ Bu isim kullanılamaz!'); return; }
   if (workersCache.find(w => w.user === u)) { toast('❌ Kullanıcı adı var!'); return; }
   try {
-    await addWorker({ user: u, pass: p, name: n, perms: { ...PERMS_DEF } });
-    $('nw-u').value = ''; $('nw-p').value = ''; $('nw-n').value = ''; toast('👷 ' + n + ' eklendi!');
-  } catch (e) { toast('❌ Kayıt başarısız!'); }
-};
-window.removeWorker = async function (wid) { if (!confirm('Bu çalışanı silmek istiyor musunuz?')) return; await deleteWorker(wid); toast('🗑️ Çalışan silindi'); };
-window.clearAllData = async function () {
-  if (!confirm('TÜM veriler silinecek!')) return; if (!confirm('Son onay: Geri alınamaz!')) return;
-  try {
-    await Promise.all([
-      sbClient.from('orders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      sbClient.from('customers').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      sbClient.from('giders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      sbClient.from('locations').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      sbClient.from('devices').delete().neq('id', '00000000-0000-0000-0000-000000000000')
-    ]);
-    ordersCache = []; custsCache = []; gidersCache = []; locsCache = []; devsCache = [];
-    toast('🗑️ Veriler silindi');
-    scheduleRender();
-  } catch (e) { toast('❌ Silme başarısız!'); }
+    const { data, error } = await sbClient.from('workers').insert([{ user: u, pass: p, name: n, perms: { ...PERMS_DEF } }]).select().single();
+    console.log('Ekleme sonucu:', data, error);
+    if (error) throw error;
+    workersCache.push(data);
+    $('nw-u').value = ''; $('nw-p').value = ''; $('nw-n').value = '';
+    toast('👷 ' + n + ' eklendi!');
+    renderAdmCalisan();
+  } catch (e) {
+    console.error('Ekleme hatası:', e);
+    toast('❌ Kayıt başarısız!');
+  }
 };
 
 /* ── TESLİM LOG ── */
