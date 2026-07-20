@@ -828,13 +828,14 @@ button{cursor:pointer;border:none;outline:none;background:none}
 <div id="toast"></div>
 
 <!-- SUPABASE KÜTÜPHANESİ -->
+<!-- SUPABASE CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-/* ── SUPABASE BAĞLANTISI (KENDİ BİLGİLERİNİZİ GİRİN) ── */
+/* ── SUPABASE BAĞLANTISI (DEĞİŞKEN ADI DEĞİŞTİRİLDİ) ── */
 const SUPABASE_URL = 'https://aziikfwgzmwulenwsvob.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_yEHCAK_zwjVebmPSuOsMBQ_V5uEX2kf';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 /* ── STATE ── */
 let ordersCache = [];
@@ -965,12 +966,12 @@ async function loadAllData() {
       { data: locs },
       { data: devs }
     ] = await Promise.all([
-      supabase.from('orders').select('*').order('created_at', { ascending: false }),
-      supabase.from('customers').select('*'),
-      supabase.from('workers').select('*'),
-      supabase.from('giders').select('*').order('created_at', { ascending: false }),
-      supabase.from('locations').select('*'),
-      supabase.from('devices').select('*')
+      sbClient.from('orders').select('*').order('created_at', { ascending: false }),
+      sbClient.from('customers').select('*'),
+      sbClient.from('workers').select('*'),
+      sbClient.from('giders').select('*').order('created_at', { ascending: false }),
+      sbClient.from('locations').select('*'),
+      sbClient.from('devices').select('*')
     ]);
 
     ordersCache = orders || [];
@@ -980,12 +981,11 @@ async function loadAllData() {
     locsCache = locs || [];
     devsCache = devs || [];
 
-    // settings tablosu boş olabilir → maybeSingle() ile hata önlenir
-    const { data: setting, error } = await supabase
+    const { data: setting, error } = await sbClient
       .from('settings')
       .select('data')
       .eq('id', 1)
-      .maybeSingle();   // <-- .single() yerine .maybeSingle()
+      .maybeSingle();
 
     if (!error && setting?.data) {
       firmaSettings = { ...firmaSettings, ...setting.data };
@@ -1000,7 +1000,7 @@ async function loadAllData() {
 }
 
 async function addOrder(data) {
-  const { data: newOrder, error } = await supabase.from('orders').insert([data]).select().single();
+  const { data: newOrder, error } = await sbClient.from('orders').insert([data]).select().single();
   if (error) throw error;
   ordersCache.unshift(newOrder);
   scheduleRender();
@@ -1008,7 +1008,7 @@ async function addOrder(data) {
 }
 
 async function updateOrder(id, updates) {
-  const { error } = await supabase.from('orders').update(updates).eq('id', id);
+  const { error } = await sbClient.from('orders').update(updates).eq('id', id);
   if (error) throw error;
   const idx = ordersCache.findIndex(o => o.id === id);
   if (idx !== -1) Object.assign(ordersCache[idx], updates);
@@ -1016,14 +1016,14 @@ async function updateOrder(id, updates) {
 }
 
 async function deleteOrder(id) {
-  const { error } = await supabase.from('orders').delete().eq('id', id);
+  const { error } = await sbClient.from('orders').delete().eq('id', id);
   if (error) throw error;
   ordersCache = ordersCache.filter(o => o.id !== id);
   scheduleRender();
 }
 
 async function addCustomer(data) {
-  const { data: newCust, error } = await supabase.from('customers').insert([data]).select().single();
+  const { data: newCust, error } = await sbClient.from('customers').insert([data]).select().single();
   if (error) throw error;
   custsCache.push(newCust);
   scheduleRender();
@@ -1031,42 +1031,42 @@ async function addCustomer(data) {
 }
 
 async function updateCustomer(id, updates) {
-  const { error } = await supabase.from('customers').update(updates).eq('id', id);
+  const { error } = await sbClient.from('customers').update(updates).eq('id', id);
   if (error) throw error;
   const idx = custsCache.findIndex(c => c.id === id);
   if (idx !== -1) Object.assign(custsCache[idx], updates);
 }
 
 async function addWorker(data) {
-  const { data: newW, error } = await supabase.from('workers').insert([data]).select().single();
+  const { data: newW, error } = await sbClient.from('workers').insert([data]).select().single();
   if (error) throw error;
   workersCache.push(newW);
   scheduleRender();
 }
 
 async function updateWorker(id, updates) {
-  const { error } = await supabase.from('workers').update(updates).eq('id', id);
+  const { error } = await sbClient.from('workers').update(updates).eq('id', id);
   if (error) throw error;
   const idx = workersCache.findIndex(w => w.id === id);
   if (idx !== -1) Object.assign(workersCache[idx], updates);
 }
 
 async function deleteWorker(id) {
-  const { error } = await supabase.from('workers').delete().eq('id', id);
+  const { error } = await sbClient.from('workers').delete().eq('id', id);
   if (error) throw error;
   workersCache = workersCache.filter(w => w.id !== id);
   scheduleRender();
 }
 
 async function addGider(data) {
-  const { data: newG, error } = await supabase.from('giders').insert([data]).select().single();
+  const { data: newG, error } = await sbClient.from('giders').insert([data]).select().single();
   if (error) throw error;
   gidersCache.unshift(newG);
   scheduleRender();
 }
 
 async function addLocation(data) {
-  const { error } = await supabase.from('locations').upsert(data, { onConflict: 'user' });
+  const { error } = await sbClient.from('locations').upsert(data, { onConflict: 'user' });
   if (error) throw error;
   const idx = locsCache.findIndex(l => l.user === data.user);
   if (idx !== -1) Object.assign(locsCache[idx], { ...data, updated_at: new Date().toISOString() });
@@ -1074,7 +1074,7 @@ async function addLocation(data) {
 }
 
 async function addDevice(data) {
-  const { error } = await supabase.from('devices').upsert(data, { onConflict: 'id' });
+  const { error } = await sbClient.from('devices').upsert(data, { onConflict: 'id' });
   if (error) throw error;
   const idx = devsCache.findIndex(d => d.id === data.id);
   if (idx !== -1) Object.assign(devsCache[idx], { ...data, last_login: new Date().toISOString() });
@@ -1082,14 +1082,14 @@ async function addDevice(data) {
 }
 
 async function deleteDevice(id) {
-  const { error } = await supabase.from('devices').delete().eq('id', id);
+  const { error } = await sbClient.from('devices').delete().eq('id', id);
   if (error) throw error;
   devsCache = devsCache.filter(d => d.id !== id);
   scheduleRender();
 }
 
 async function saveFirmaSettingsToDB() {
-  await supabase.from('settings').upsert({ id: 1, data: firmaSettings });
+  await sbClient.from('settings').upsert({ id: 1, data: firmaSettings });
 }
 
 /* ── PERFORMANCE ── */
@@ -1402,11 +1402,11 @@ window.clearAllData = async function () {
   if (!confirm('TÜM veriler silinecek!')) return; if (!confirm('Son onay: Geri alınamaz!')) return;
   try {
     await Promise.all([
-      supabase.from('orders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      supabase.from('customers').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      supabase.from('giders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      supabase.from('locations').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
-      supabase.from('devices').delete().neq('id', '00000000-0000-0000-0000-000000000000')
+      sbClient.from('orders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
+      sbClient.from('customers').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
+      sbClient.from('giders').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
+      sbClient.from('locations').delete().neq('id', '00000000-0000-0000-0000-000000000000'),
+      sbClient.from('devices').delete().neq('id', '00000000-0000-0000-0000-000000000000')
     ]);
     ordersCache = []; custsCache = []; gidersCache = []; locsCache = []; devsCache = [];
     toast('🗑️ Veriler silindi');
