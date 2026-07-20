@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <title>Şelale Halı Yıkama</title>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2138,27 +2139,78 @@ window.openWhatsAppLink=function(){
   toast('💬 WhatsApp açılıyor…');
 };
 
-/* ── BAŞLATMA ── */
-async function init(){
-  loadingProgress(15,'Firebase bağlanıyor…');
-  try{
-    const[wSnap]=await Promise.all([getDocs(WORKERS_COL),loadFirmaSettings()]);
-    workersCache=wSnap.docs.map(d=>({id:d.id,...d.data()}));
-    loadingProgress(70,'Hazırlanıyor…');
-  }catch(e){loadingProgress(70,'Devam ediliyor…');}
-  await new Promise(r=>setTimeout(r,400));
-  loadingProgress(100,'Hazır! ✓');
-  await new Promise(r=>setTimeout(r,250));
-  hideLoading();
-  if(tryAutoLogin()){
-    $('shell').style.display='flex';applyRole();startListeners();registerDevice();go('dashboard');
-    try{if(typeof AndroidBridge!=='undefined'&&AndroidBridge.isAndroid())AndroidBridge.onLogin(session.user,session.name);}catch(e){}
-    startAutoGps();
-    setTimeout(()=>autoSyncRehber(),5000);
-  }else{
-    $('login-screen').style.display='flex';
+/* ── SUPABASE BAĞLANTISI VE BAŞLATMA ── */
+
+// 1. Supabase Bağlantı Bilgileri
+const SUPABASE_URL = 'https://yehcak-zwjvebmpsuosmbq-v5uex2kf.supabase.co'; 
+const SUPABASE_KEY = 'sb_publishable_yEHCAK_zwjVebmPSuOsMBQ_V5uEX2kf';
+
+// Supabase İstemcisi Tanımlama
+const supabaseClient = (typeof supabase !== 'undefined' && supabase.createClient) 
+  ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY) 
+  : null;
+
+// 2. Yardımcı Veri Okuma Fonksiyonu
+async function getSupabaseData(tableName) {
+  if (!supabaseClient) return [];
+  try {
+    const { data, error } = await supabaseClient.from(tableName).select('*');
+    if (error) {
+      console.error(tableName + ' çekilirken hata oluştu:', error);
+      return [];
+    }
+    return data || [];
+  } catch (e) {
+    console.error("Supabase hatası:", e);
+    return [];
   }
 }
+
+/* ── BAŞLATMA ── */
+async function init(){
+  loadingProgress(15, 'Veritabanına bağlanıyor…');
+  try {
+    const [workersData] = await Promise.all([
+      getSupabaseData('workers'),
+      loadFirmaSettings()
+    ]);
+    
+    workersCache = workersData || [];
+    loadingProgress(70, 'Hazırlanıyor…');
+  } catch(e) {
+    console.error("Başlatma hatası:", e);
+    loadingProgress(70, 'Devam ediliyor…');
+  }
+
+  await new Promise(r => setTimeout(r, 400));
+  loadingProgress(100, 'Hazır! ✓');
+  await new Promise(r => setTimeout(r, 250));
+  hideLoading();
+
+  if(tryAutoLogin()){
+    $('shell').style.display = 'flex';
+    applyRole();
+    startListeners();
+    registerDevice();
+    go('dashboard');
+    try {
+      if(typeof AndroidBridge !== 'undefined' && AndroidBridge.isAndroid()) {
+        AndroidBridge.onLogin(session.user, session.name);
+      }
+    } catch(e) {}
+    startAutoGps();
+    setTimeout(() => autoSyncRehber(), 5000);
+  } else {
+    // Oturum yoksa giriş ekranını gösterir
+    if (typeof showLogin === 'function') {
+      showLogin();
+    } else {
+      $('login-screen').style.display = 'flex';
+    }
+  }
+}
+
+// Uygulamayı Başlat
 init();
 </script>
 </body>
